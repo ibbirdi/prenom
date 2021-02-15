@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Bonjour</h1>
+    <form id="main-form" action="">
+      <label for="lettres-interdites"
+        >Lettres interdites
+        <input id="lettres-interdites" value="ba" required type="text"
+      /></label>
+      <label for="lettres-obligatoires"
+        >Lettres obligatoires
+        <input id="lettres-obligatoires" value="en" required type="text"
+      /></label>
+      <label for="longueur-prenom"
+        >Longueur du prénom
+        <input id="longueur-prenom" value="7" required type="number"
+      /></label>
+      <button type="submit">Rechercher</button>
+    </form>
+    <div id="results-container"></div>
+
+    <script src="prenoms.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
