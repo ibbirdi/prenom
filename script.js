@@ -1,10 +1,6 @@
 // un objet 'prenoms' contenant les données de 227424 prénoms est contenu dans un autre fichier JS
 
 const app = {
-  // on définit les lettres que le prénom ne doit pas contenir dans une string (séparées par des espaces)
-  lettresInterdites: 'z',
-  lettresObligatoires: 'ë',
-
   // la liste des prénoms sera stockée ici
   resultat: [],
 
