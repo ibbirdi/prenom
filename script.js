@@ -74,10 +74,6 @@ const app = {
         app.resultat.push(prenoms[i]);
       }
     }
-    // on supprime les doublons
-    let cleanResult = new Set(app.resultat);
-    app.resultat = [...cleanResult];
-    console.log(app.resultat);
   },
 
   showResults(e) {
