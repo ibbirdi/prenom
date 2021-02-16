@@ -4,6 +4,8 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="reset.css" />
+    <link rel="stylesheet" href="style.css" />
     <title>Prenom</title>
   </head>
   <body>
@@ -11,15 +13,14 @@
     <form id="main-form" action="">
       <label for="lettres-interdites"
         >Lettres interdites
-        <input id="lettres-interdites" value="ba" required type="text"
+        <input id="lettres-interdites" value="ba" type="text"
       /></label>
       <label for="lettres-obligatoires"
         >Lettres obligatoires
-        <input id="lettres-obligatoires" value="en" required type="text"
+        <input id="lettres-obligatoires" value="en" type="text"
       /></label>
       <label for="longueur-prenom"
-        >Longueur du prénom
-        <input id="longueur-prenom" value="7" required type="number"
+        >Longueur du prénom <input id="longueur-prenom" value="7" type="number"
       /></label>
       <button type="submit">Rechercher</button>
     </form>

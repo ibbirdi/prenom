@@ -10,9 +10,10 @@ const app = {
   inputMandatoryLetters: document.getElementById('lettres-obligatoires'),
   inputFirstNameLength: document.getElementById('longueur-prenom'),
 
-  // pour convertir la string de lettres interdites en array
+  // pour convertir la string de lettres interdites en array et supprimer les accents et majuscules éventuels
   convertString: (string) => {
     let finalString = string.toLowerCase();
+    finalString = finalString.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
     return finalString.split('');
   },
 
@@ -42,6 +43,17 @@ const app = {
     return lettersArray.every((x) => testStringArray.includes(x));
   },
 
+  lengthCheck: (testString, desiredLength) => {
+    if (!desiredLength) {
+      return true;
+    }
+    if (testString.length === desiredLength) {
+      return true;
+    } else {
+      return false;
+    }
+  },
+
   // trouver les bons prénoms
   findPrenom: (firstNameLength, forbiddenLetters, mandatoryLetters) => {
     console.log(
@@ -55,7 +67,7 @@ const app = {
 
     for (let i = 0; i < prenoms.length; i++) {
       if (
-        prenoms[i].fields.prenoms.length === firstNameLength &&
+        app.lengthCheck(prenoms[i].fields.prenoms, firstNameLength) &&
         app.notLetters(prenoms[i].fields.prenoms, forbiddenLetters) &&
         app.containsLetters(prenoms[i].fields.prenoms, mandatoryLetters)
       ) {
