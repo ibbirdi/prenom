@@ -67,16 +67,17 @@ const app = {
 
     for (let i = 0; i < prenoms.length; i++) {
       if (
-        app.lengthCheck(prenoms[i].fields.prenoms, firstNameLength) &&
-        app.notLetters(prenoms[i].fields.prenoms, forbiddenLetters) &&
-        app.containsLetters(prenoms[i].fields.prenoms, mandatoryLetters)
+        app.lengthCheck(prenoms[i].prenom, firstNameLength) &&
+        app.notLetters(prenoms[i].prenom, forbiddenLetters) &&
+        app.containsLetters(prenoms[i].prenom, mandatoryLetters)
       ) {
-        app.resultat.push(prenoms[i].fields.prenoms);
+        app.resultat.push(prenoms[i]);
       }
     }
     // on supprime les doublons
     let cleanResult = new Set(app.resultat);
     app.resultat = [...cleanResult];
+    console.log(app.resultat);
   },
 
   showResults(e) {
@@ -97,15 +98,23 @@ const app = {
       app.inputMandatoryLetters.value
     );
 
-    if (app.resultat.length <= 50 && app.resultat.length > 0) {
+    if (app.resultat.length <= 1000 && app.resultat.length > 0) {
       for (i = 0; i < app.resultat.length; i++) {
         let result = document.createElement('div');
         result.classList.add('result');
-        result.textContent = app.resultat[i];
+        if (app.resultat[i].sexe == 'M') {
+          result.classList.add('boy');
+        } else {
+          result.classList.add('girl');
+        }
+        result.textContent = app.resultat[i].prenom;
         app.resultsContainer.appendChild(result);
       }
     } else if (app.resultat.length == 0) {
-      console.log('pas de résultat');
+      let result = document.createElement('div');
+      result.classList.add('result');
+      result.textContent = 'Aucun prénom ne correspond à votre recherche';
+      app.resultsContainer.appendChild(result);
     } else {
       let result = document.createElement('div');
       result.classList.add('result');
