@@ -44,8 +44,14 @@ const app = {
 
   // trouver les bons prénoms
   findPrenom: (firstNameLength, forbiddenLetters, mandatoryLetters) => {
-    app.resulat = []; //réinit le résultat
-    console.log('reinit', app.resulat);
+    console.log(
+      'parametres de findPrenom : ', // tout est ok ici
+      firstNameLength,
+      forbiddenLetters,
+      mandatoryLetters
+    );
+    app.resultat.length = 0; //réinit le résultat
+    console.log('reinit', app.resultat);
 
     for (let i = 0; i < prenoms.length; i++) {
       if (
@@ -59,7 +65,6 @@ const app = {
     // on supprime les doublons
     let cleanResult = new Set(app.resultat);
     app.resultat = [...cleanResult];
-    console.log(app.resultat);
   },
 
   showResults(e) {
