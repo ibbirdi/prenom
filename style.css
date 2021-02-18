@@ -7,6 +7,7 @@
 
 body {
   font-family: sans-serif;
+  color: var(--couleur1);
 }
 label {
   display: flex;
@@ -76,6 +77,16 @@ main {
   font-size: 1rem;
   padding: 5px 10px;
   border-radius: 5px;
+}
+
+#compteur-resultats {
+  border: 3px solid var(--couleur1);
+  border-radius: 100px;
+  padding: 10px 20px;
+  width: 200px;
+  margin: 10px auto;
+  font-weight: bold;
+  color: var(--couleur1);
 }
 
 #results-container {

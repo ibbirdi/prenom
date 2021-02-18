@@ -3,7 +3,9 @@
 const app = {
   // la liste des prénoms sera stockée ici
   resultat: [],
+  compteur: 0,
 
+  compteurNode: document.getElementById('compteur-resultats'),
   form: document.getElementById('main-form'),
   resultsContainer: document.getElementById('results-container'),
   inputForbiddenLetters: document.getElementById('lettres-interdites'),
@@ -63,6 +65,7 @@ const app = {
       mandatoryLetters
     );
     app.resultat.length = 0; //réinit le résultat
+    app.compteur = 0;
     console.log('reinit', app.resultat);
 
     for (let i = 0; i < prenoms.length; i++) {
@@ -72,6 +75,7 @@ const app = {
         app.containsLetters(prenoms[i].prenom, mandatoryLetters)
       ) {
         app.resultat.push(prenoms[i]);
+        app.compteur++;
       }
     }
   },
@@ -105,17 +109,13 @@ const app = {
         }
         result.textContent = app.resultat[i].prenom;
         app.resultsContainer.appendChild(result);
+        app.compteurNode.textContent = app.compteur + ' prénom(s) trouvé(s)';
       }
     } else if (app.resultat.length == 0) {
-      let result = document.createElement('div');
-      result.classList.add('result');
-      result.textContent = 'Aucun prénom ne correspond à votre recherche';
-      app.resultsContainer.appendChild(result);
+      app.compteurNode.textContent = 'Aucun prénom trouvé';
     } else {
-      let result = document.createElement('div');
-      result.classList.add('result');
-      result.textContent = 'Trop de résultats, affinez votre recherche';
-      app.resultsContainer.appendChild(result);
+      app.compteurNode.textContent =
+        'Trop de résultats ! Affinez votre recherche';
     }
   },
 };
